@@ -2,34 +2,51 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import time
+import altair as alt
 
 
 def main():
-    st.header('st.button')
+    # st.header('st.button')
 
-    if st.button('Say hello'):
-        st.write('Hi Nick!')
-    else:
-        st.write('Goodbye')
-    # progress_bar = st.sidebar.progress(0)
-    # status_text = st.sidebar.empty()
-    # last_rows = np.random.randn(1, 1)
-    # chart = st.line_chart(last_rows)
+    # if st.button('Say hello'):
+    #     st.write('Hi Nick!')
+    # else:
+    #     st.write('Goodbye')
 
-    # for i in range(1, 101):
-    #     new_rows = last_rows[-1, :] + np.random.randn(5, 1).cumsum(axis=0)
-    #     status_text.text("%i%% Complete" % i)
-    #     chart.add_rows(new_rows)
-    #     progress_bar.progress(i)
-    #     last_rows = new_rows
-    #     time.sleep(0.05)
+    st.header('st.write')
 
-    # progress_bar.empty()
+    # Example 1
 
-    # # Streamlit widgets automatically run the script from top to bottom. Since
-    # # this button is not connected to any other logic, it just causes a plain
-    # # rerun.
-    # st.button("Re-run")
+    st.write('Hello, *World!* :sunglasses:')
+
+    # Example 2
+
+    st.write(1234)
+
+    # Example 3
+
+    df = pd.DataFrame({
+        'first column': [1, 2, 3, 4],
+        'second column': [10, 20, 30, 40]
+        })
+    st.write(df)
+
+    # Example 4
+
+    st.write('Below is a DataFrame:', df, 'Above is a dataframe.')
+
+    # Example 5
+
+    df2 = pd.DataFrame(
+        np.random.randn(200, 3),
+        columns=['a', 'b', 'c'])
+    c = alt.Chart(df2).mark_circle().encode(
+        x='a', y='b', size='c', color='c', tooltip=['a', 'b', 'c'])
+    st.write(c)
+
+    code = '''def hello():
+    print("Hello, Streamlit!")'''
+    st.code(code, language='python')
 
 if __name__ == "__main__":
     main()
