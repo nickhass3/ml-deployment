@@ -10,7 +10,7 @@ def main():
     st.header('st.button')
 
     if st.button('Say hello'):
-        st.write('Why hello there Nick')
+        st.write('Hi Nick!')
     else:
         st.write('Goodbye')
     # progress_bar = st.sidebar.progress(0)
